@@ -108,10 +108,6 @@ export default class Notes extends Component {
     return API.del("notes", `/notes/${this.props.match.params.id}`);
   }
   
-  deleteNote() {
-    return API.del("notes", `/notes/${this.props.match.params.id}`);
-  }
-  
   handleDelete = async event => {
     event.preventDefault();
   
