@@ -56,15 +56,15 @@ export default class Signup extends Component {
         newUser
       });
     } catch (e) {
-      alert(e.message);
-      /*
-      TODO:
-        Currently if a user refreshes their page at the confirmation step, they will only be able to create a new user.
-
-        1. Check for UsernameExistsException.
-        2. If so resend the signup: https://aws.github.io/aws-amplify/api/classes/authclass.html#resendsignup
-        3. Confirm the code as before
-      */
+     /* Resend the confirmation code if the user refreshes their page at the confirmation step*/
+      if (e.code === "UsernameExistsException") {
+        const tryAgain = await Auth.resendSignUp(this.state.email);
+        this.setState({
+          newUser: tryAgain
+        });
+      } else {
+        alert(e.message);
+      }
     }
   
     this.setState({ isLoading: false });
