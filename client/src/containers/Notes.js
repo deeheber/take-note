@@ -108,6 +108,10 @@ export default class Notes extends Component {
     return API.del("notes", `/notes/${this.props.match.params.id}`);
   }
   
+  deleteNote() {
+    return API.del("notes", `/notes/${this.props.match.params.id}`);
+  }
+  
   handleDelete = async event => {
     event.preventDefault();
   
@@ -123,6 +127,9 @@ export default class Notes extends Component {
   
     try {
       await this.deleteNote();
+      if (this.state.note.attachment) {
+        await s3Delete(this.state.note.attachment);
+      }
       this.props.history.push("/");
     } catch (e) {
       alert(e);
