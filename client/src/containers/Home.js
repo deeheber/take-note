@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { API } from "aws-amplify";
 
@@ -65,8 +66,16 @@ export default class Home extends Component {
   renderLander() {
     return (
       <div className="lander">
-        <h1>Scratch</h1>
+        <h1>Take Note!</h1>
         <p>A simple note taking app</p>
+        <div>
+          <Link to="/login" className="btn btn-info btn-lg">
+            Login
+          </Link>
+          <Link to="/signup" className="btn btn-success btn-lg">
+            Signup
+          </Link>
+        </div>
       </div>
     );
   }
