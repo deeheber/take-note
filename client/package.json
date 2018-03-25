@@ -15,6 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://heberling-notes-app-client --delete --profile admin",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E3DCFICYV6I8KH --paths '/*' --profile admin"
   }
 }
