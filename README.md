@@ -7,5 +7,3 @@ An note taking app built using serverless and React with the following [AWS](htt
  - Dynamo DB
  - S3
  - Cloudfront
-
- Live version published [HERE](http://d15jgxh06n7vs9.cloudfront.net/).
